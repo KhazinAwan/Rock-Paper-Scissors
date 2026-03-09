@@ -69,6 +69,23 @@ function playRound(humanChoice, computerChoice) {
 
 }
 
+function winner() {
+
+    if(humanScore > computerScore) {
+        console.log("YAYY! HUMAN WON")
+    }
+
+    else if(humanScore < computerScore) {
+        console.log("Computer won , better luck nice time")
+    }
+
+    else {
+        console.log("And we have a tie!")
+    }
+}
+
+
+
 function playGame() {
 
     for(let i = 0 ; i < 5 ; i++) {
@@ -85,6 +102,8 @@ function playGame() {
     console.log("Score results are: ")
     console.log(`Human Score: ${humanScore}`)
     console.log(`Computer Score: ${computerScore}`)
+
+    winner()
     
 }
 
