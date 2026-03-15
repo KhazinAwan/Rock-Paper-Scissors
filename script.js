@@ -31,8 +31,8 @@ function getHumanChoice() {
 
 }
 
-function playRound(humanChoice, computerChoice) {
-  
+function playRound(humanChoice , computerChoice) {
+
     if(humanChoice == 'rock' && computerChoice == 'paper') {
         console.log("You lose! paper beats rock")
         computerScore++
@@ -84,9 +84,20 @@ function winner() {
     }
 }
 
+const choices = document.querySelectorAll(".choice")
+
+choices.forEach( (choice) => {
+    choice.addEventListener("click" , (e) => {
+        const humanChoice = e.target.textContent.toLowerCase()
+        const computerChoice = getComputerChoice()
+        console.log(humanChoice)
+        console.log(computerChoice)
+        playRound(humanChoice , computerChoice)
+    })
+})
 
 
-function playGame() {
+/*function playGame() {
 
     for(let i = 0 ; i < 5 ; i++) {
 
@@ -105,6 +116,6 @@ function playGame() {
 
     winner()
     
-}
+}*/
 
-playGame()
+//playGame()
