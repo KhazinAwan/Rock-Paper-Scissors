@@ -34,37 +34,37 @@ function getHumanChoice() {
 function playRound(humanChoice , computerChoice) {
 
     if(humanChoice == 'rock' && computerChoice == 'paper') {
-        console.log("You lose! paper beats rock")
+        resultMsg.textContent = "You lose! paper beats rock"
         computerScore++
     }
 
     else if(humanChoice == 'rock' && computerChoice == 'scissors') {
-        console.log("You win! rock beats scissors")
+        resultMsg.textContent = "You win! rock beats scissors"
         humanScore++
     }
 
     else if(humanChoice == 'paper' && computerChoice == 'rock') {
-        console.log("You win! paper beats rock")
+        resultMsg.textContent = "You win! paper beats rock" 
         humanScore++
     }
     
     else if(humanChoice == 'paper' && computerChoice == 'scissors') {
-        console.log("You lose! scissors beats paper")
+        resultMsg.textContent = "You lose! scissors beats paper"
         computerScore++
     }
 
     else if(humanChoice == 'scissors' && computerChoice == 'rock') {
-        console.log("You lose! rock beats scissors")
+        resultMsg.textContent = "You lose! rock beats scissors" 
         computerScore++
     }
 
     else if(humanChoice == 'scissors' && computerChoice == 'paper') {
-        console.log("You win! scissors beats paper")
+        resultMsg.textContent = "You win! scissors beats paper"
         humanScore++
     }
 
     else {
-        console.log("Its a tie!")
+        resultMsg.textContent = "Its a tie!"
     }
 
 }
@@ -85,6 +85,7 @@ function winner() {
 }
 
 const choices = document.querySelectorAll(".choice")
+const resultMsg = document.querySelector(".resultMsg")
 
 choices.forEach( (choice) => {
     choice.addEventListener("click" , (e) => {
