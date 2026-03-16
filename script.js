@@ -21,7 +21,7 @@ function getComputerChoice() {
 
 }
 
-function getHumanChoice() {
+/*function getHumanChoice() {
 
     let input = prompt("Enter your choice: ")
 
@@ -29,7 +29,7 @@ function getHumanChoice() {
 
     return input
 
-}
+}*/
 
 function playRound(humanChoice , computerChoice) {
 
@@ -67,9 +67,41 @@ function playRound(humanChoice , computerChoice) {
         resultMsg.textContent = "Its a tie!"
     }
 
+    if(humanScore == 5 || computerScore == 5) {
+
+        if(humanScore == 5) {
+            resultMsg.textContent = "YOU WON THE GAME!"
+        }
+
+        else {
+            resultMsg.textContent = "COMPUTER WON THE GAME!"
+        }
+
+        choices.forEach((choice) => choice.disabled = true)
+
+        const reset = document.createElement("button")
+        reset.textContent = "Play Again"
+        document.body.appendChild(reset)
+
+        reset.addEventListener("click" , () => {
+
+            humanScore = 0
+            computerScore = 0
+
+            humanDisplayScore.textContent = humanScore
+            compDisplayScore.textContent = computerScore
+            resultMsg.textContent = "LET THE GAME BEGIN!"
+
+            reset.remove()
+
+            choices.forEach((choice) => choice.disabled = false)
+
+        })
+    }
+
 }
 
-function winner() {
+/*function winner() {
 
     if(humanScore > computerScore) {
         console.log("YAYY! HUMAN WON")
@@ -82,9 +114,12 @@ function winner() {
     else {
         console.log("And we have a tie!")
     }
-}
+}*/
 
 const choices = document.querySelectorAll(".choice")
+const humanDisplayScore = document.querySelector(".human .score")
+const compDisplayScore = document.querySelector(".computer .score")
+
 const resultMsg = document.querySelector(".resultMsg")
 
 choices.forEach( (choice) => {
@@ -94,6 +129,8 @@ choices.forEach( (choice) => {
         console.log(humanChoice)
         console.log(computerChoice)
         playRound(humanChoice , computerChoice)
+        humanDisplayScore.textContent = humanScore
+        compDisplayScore.textContent = computerScore
     })
 })
 
