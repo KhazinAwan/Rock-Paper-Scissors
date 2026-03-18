@@ -72,13 +72,13 @@ function playRound(humanChoice , computerChoice) {
     if(humanScore == 5 || computerScore == 5) {
 
     winner()
-    PLayAgainLogic()
+    pLayAgainLogic()
 
     }
 
 }
 
-function PLayAgainLogic() {
+function pLayAgainLogic() {
 
     const choiceButtons = document.querySelectorAll(".choice")
     const buttonContainer = document.querySelector(".buttons")
