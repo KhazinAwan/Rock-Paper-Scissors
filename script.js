@@ -1,6 +1,7 @@
 
 let humanScore = 0
 let computerScore = 0
+choices = ["rock" , "paper" , "scissors"]
 
 
 function getComputerChoice() {
@@ -67,72 +68,91 @@ function playRound(humanChoice , computerChoice) {
         resultMsg.textContent = "Its a tie!"
     }
 
+
     if(humanScore == 5 || computerScore == 5) {
 
-        if(humanScore == 5) {
-            resultMsg.textContent = "YOU WON THE GAME!"
-        }
+    winner()
+    PLayAgainLogic()
 
-        else {
-            resultMsg.textContent = "COMPUTER WON THE GAME!"
-        }
-
-        choices.forEach((choice) => choice.disabled = true)
-
-        const reset = document.createElement("button")
-        reset.textContent = "Play Again"
-        document.body.appendChild(reset)
-
-        reset.addEventListener("click" , () => {
-
-            humanScore = 0
-            computerScore = 0
-
-            humanDisplayScore.textContent = humanScore
-            compDisplayScore.textContent = computerScore
-            resultMsg.textContent = "LET THE GAME BEGIN!"
-
-            reset.remove()
-
-            choices.forEach((choice) => choice.disabled = false)
-
-        })
     }
 
 }
 
-/*function winner() {
+function PLayAgainLogic() {
 
-    if(humanScore > computerScore) {
-        console.log("YAYY! HUMAN WON")
-    }
+    const choiceButtons = document.querySelectorAll(".choice")
+    const buttonContainer = document.querySelector(".buttons")
 
-    else if(humanScore < computerScore) {
-        console.log("Computer won , better luck nice time")
+    choiceButtons.forEach((choice) => choice.remove())
+
+    const reset = document.createElement("button")
+    reset.textContent = "Play Again"
+    reset.classList.add("choice" , "playAgain")
+    buttonContainer.appendChild(reset)
+
+    reset.addEventListener("click" , () => {
+
+        humanScore = 0
+        computerScore = 0
+
+        humanDisplayScore.textContent = humanScore
+        compDisplayScore.textContent = computerScore
+        resultMsg.textContent = "LET THE GAME BEGIN!"
+
+        reset.remove()
+
+        addChoiceButtons()
+
+    })
+}
+
+function addChoiceButtons() {
+
+    choices.forEach((choice) => {
+
+        const choiceButton = document.createElement("button")
+        choiceButton.classList.add("choice")
+        choiceButton.textContent = choice
+
+        choiceButton.addEventListener("click" , (e) => {
+
+            const humanChoice = e.target.textContent.toLowerCase()
+            const computerChoice = getComputerChoice()
+
+            console.log(humanChoice)
+
+            playRound(humanChoice , computerChoice)
+            
+            humanDisplayScore.textContent = humanScore
+            compDisplayScore.textContent = computerScore
+        })
+       
+        const buttonContainer = document.querySelector(".buttons")
+        buttonContainer.appendChild(choiceButton)
+    })
+
+}
+
+function winner() {
+
+    if(humanScore == 5) {
+        resultMsg.textContent = "YOU WON THE GAME!"
     }
 
     else {
-        console.log("And we have a tie!")
+        resultMsg.textContent = "COMPUTER WON THE GAME!"
     }
-}*/
+}
 
-const choices = document.querySelectorAll(".choice")
+
+
+addChoiceButtons()
+
 const humanDisplayScore = document.querySelector(".human .score")
 const compDisplayScore = document.querySelector(".computer .score")
-
 const resultMsg = document.querySelector(".resultMsg")
 
-choices.forEach( (choice) => {
-    choice.addEventListener("click" , (e) => {
-        const humanChoice = e.target.textContent.toLowerCase()
-        const computerChoice = getComputerChoice()
-        console.log(humanChoice)
-        console.log(computerChoice)
-        playRound(humanChoice , computerChoice)
-        humanDisplayScore.textContent = humanScore
-        compDisplayScore.textContent = computerScore
-    })
-})
+
 
 
 /*function playGame() {
