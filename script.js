@@ -22,15 +22,6 @@ function getComputerChoice() {
 
 }
 
-/*function getHumanChoice() {
-
-    let input = prompt("Enter your choice: ")
-
-    input = input.toLowerCase()
-
-    return input
-
-}*/
 
 function playRound(humanChoice , computerChoice) {
 
@@ -151,29 +142,3 @@ addChoiceButtons()
 const humanDisplayScore = document.querySelector(".human .score")
 const compDisplayScore = document.querySelector(".computer .score")
 const resultMsg = document.querySelector(".resultMsg")
-
-
-
-
-/*function playGame() {
-
-    for(let i = 0 ; i < 5 ; i++) {
-
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-
-        console.log(`Human choice: ${humanSelection}` )
-        console.log(`Computer choice: ${computerSelection}` )
-
-        playRound(humanSelection , computerSelection)
-    }
-
-    console.log("Score results are: ")
-    console.log(`Human Score: ${humanScore}`)
-    console.log(`Computer Score: ${computerScore}`)
-
-    winner()
-    
-}*/
-
-//playGame()
