@@ -83,17 +83,16 @@ function pLayAgainLogic() {
 
     reset.addEventListener("click" , () => {
 
-        humanScore = 0
-        computerScore = 0
+            humanScore = 0
+            computerScore = 0
 
-        humanDisplayScore.textContent = humanScore
-        compDisplayScore.textContent = computerScore
-        resultMsg.textContent = "LET THE GAME BEGIN!"
+            humanDisplayScore.textContent = humanScore
+            compDisplayScore.textContent = computerScore
+            resultMsg.textContent = "LET THE GAME BEGIN!"
 
-        reset.remove()
+            reset.remove()
 
-        addChoiceButtons()
-
+            addChoiceButtons()
     })
 }
 
@@ -105,9 +104,16 @@ function addChoiceButtons() {
         choiceButton.classList.add("choice")
         choiceButton.textContent = choice
 
+
         choiceButton.addEventListener("click" , (e) => {
 
-            const humanChoice = e.target.textContent.toLowerCase()
+            e.target.classList.add("selected")
+
+            setTimeout(() => {
+                e.target.classList.remove("selected")
+            } , 300)
+
+            const humanChoice = e.target.textContent
             const computerChoice = getComputerChoice()
 
             console.log(humanChoice)
@@ -142,3 +148,5 @@ addChoiceButtons()
 const humanDisplayScore = document.querySelector(".human .score")
 const compDisplayScore = document.querySelector(".computer .score")
 const resultMsg = document.querySelector(".resultMsg")
+
+

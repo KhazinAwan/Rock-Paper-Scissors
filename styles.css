@@ -82,6 +82,10 @@ main {
 
 }
 
+.selected {
+    border: 4px solid orange;
+}
+
 .playAgain {
     width: 250px;
 }
@@ -95,3 +99,4 @@ footer {
     margin: 0;
     border: 1px solid orange;
 }
+
